@@ -1,0 +1,17 @@
+[package]
+name = "generic_once_cell"
+version = "0.0.0"
+authors = ["Martin Kröning <mkroening@posteo.net>"]
+edition = "2021"
+description = "A bring-your-own-mutex version of once_cell."
+repository = "https://github.com/mkroening/generic_once_cell"
+license = "MIT OR Apache-2.0"
+keywords = ["lazy", "static"]
+categories = ["rust-patterns", "memory-management", "no-std"]
+
+[dependencies]
+lock_api = "0.4"
+
+[dev-dependencies]
+crossbeam-utils = "0.8"
+parking_lot = "0.12"
