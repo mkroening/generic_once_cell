@@ -26,7 +26,7 @@
 //! * [spin], though you might prefer [`spin::once::Once`] and [`spin::lazy::Lazy`].
 //! * [parking_lot], though you might prefer the original [once_cell].
 //!
-//! This crate shows it's real strength when using custom, specialized mutex implementations though.
+//! This crate shows its real strength when using custom, specialized mutex implementations though.
 //!
 //! # Performance
 //!
