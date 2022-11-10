@@ -33,6 +33,16 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo fmt -- --check
 
+  miri:
+    name: Test with Miri
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: miri
+      - run: cargo miri test
+
   test:
     name: Test
     runs-on: ubuntu-latest
