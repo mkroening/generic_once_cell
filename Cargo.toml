@@ -1,6 +1,6 @@
 [package]
 name = "generic_once_cell"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["Martin Kröning <mkroening@posteo.net>"]
 edition = "2021"
 description = "A bring-your-own-mutex version of once_cell."
