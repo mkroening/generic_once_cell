@@ -1,5 +1,9 @@
 # generic_once_cell
 
+[![Crates.io](https://img.shields.io/crates/v/generic_once_cell)](https://crates.io/crates/generic_once_cell)
+[![docs.rs](https://img.shields.io/docsrs/generic_once_cell)](https://docs.rs/generic_once_cell)
+[![CI](https://github.com/mkroening/generic_once_cell/actions/workflows/ci.yml/badge.svg)](https://github.com/mkroening/generic_once_cell/actions/workflows/ci.yml)
+
 generic_once_cell is a generic `no_std` version of [once_cell].
 Internal synchronization for initialization is provided as type parameter via custom mutexes based on [lock_api].
 This makes it suitable for use in complex `no_std` scenarios where [once_cell's `critical-section` support] and [`once_cell::race`] are not sufficient.
