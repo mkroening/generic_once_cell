@@ -1,4 +1,5 @@
 use core::{
+    marker::PhantomData,
     panic::{RefUnwindSafe, UnwindSafe},
     sync::atomic::{AtomicBool, Ordering},
 };
@@ -8,7 +9,11 @@ use lock_api::{Mutex, RawMutex};
 pub(crate) struct OnceCell<R, T> {
     initialized: AtomicBool,
     value: Mutex<R, Option<T>>,
+    unsync: PhantomData<*mut ()>,
 }
+
+unsafe impl<R: RawMutex + Send, T: Send> Send for OnceCell<R, T> {}
+unsafe impl<R: RawMutex + Sync, T: Sync + Send> Sync for OnceCell<R, T> {}
 
 impl<R, T> RefUnwindSafe for OnceCell<R, T>
 where
@@ -28,6 +33,7 @@ impl<R: RawMutex, T> OnceCell<R, T> {
         Self {
             initialized: AtomicBool::new(false),
             value: Mutex::new(None),
+            unsync: PhantomData,
         }
     }
 
@@ -35,6 +41,7 @@ impl<R: RawMutex, T> OnceCell<R, T> {
         Self {
             initialized: AtomicBool::new(true),
             value: Mutex::new(Some(value)),
+            unsync: PhantomData,
         }
     }
 

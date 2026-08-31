@@ -574,6 +574,14 @@ impl<R: RawMutex, T: Default> Default for Lazy<R, T> {
 ///
 /// ```compile_fail
 /// struct S(*mut ());
+/// unsafe impl Send for S {}
+///
+/// fn share<T: Sync>(_: &T) {}
+/// share(&generic_once_cell::OnceCell::<parking_lot::RawMutex, S>::new());
+/// ```
+///
+/// ```compile_fail
+/// struct S(*mut ());
 /// unsafe impl Sync for S {}
 ///
 /// fn share<T: Sync>(_: &T) {}
