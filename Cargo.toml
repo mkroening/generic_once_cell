@@ -14,4 +14,4 @@ lock_api = "0.4"
 
 [dev-dependencies]
 crossbeam-utils = "0.8"
-parking_lot = "0.12"
+parking_lot = "0.13"
