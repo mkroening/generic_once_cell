@@ -10,7 +10,7 @@ keywords = ["lazy", "static"]
 categories = ["rust-patterns", "memory-management", "no-std"]
 
 [dependencies]
-lock_api = "0.4"
+lock_api = "0.5"
 
 [dev-dependencies]
 crossbeam-utils = "0.8"
