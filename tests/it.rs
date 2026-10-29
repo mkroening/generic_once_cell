@@ -1,6 +1,6 @@
 use std::sync::{
-    atomic::{AtomicUsize, Ordering::SeqCst},
     Barrier,
+    atomic::{AtomicUsize, Ordering::SeqCst},
 };
 
 use crossbeam_utils::thread::scope;
@@ -308,10 +308,12 @@ fn once_cell_does_not_leak_partially_constructed_boxes() {
         let cell: OnceCell<RawMutex, String> = OnceCell::new();
         scope(|scope| {
             for _ in 0..n_readers {
-                scope.spawn(|_| loop {
-                    if let Some(msg) = cell.get() {
-                        assert_eq!(msg, MSG);
-                        break;
+                scope.spawn(|_| {
+                    loop {
+                        if let Some(msg) = cell.get() {
+                            assert_eq!(msg, MSG);
+                            break;
+                        }
                     }
                 });
             }

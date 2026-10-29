@@ -2,7 +2,7 @@
 name = "generic_once_cell"
 version = "0.1.2"
 authors = ["Martin Kröning <mkroening@posteo.net>"]
-edition = "2021"
+edition = "2024"
 description = "A bring-your-own-mutex version of once_cell."
 repository = "https://github.com/mkroening/generic_once_cell"
 license = "MIT OR Apache-2.0"
